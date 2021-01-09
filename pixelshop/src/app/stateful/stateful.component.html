@@ -16,13 +16,14 @@
           </div>
          </div>
         </div>
+        <ul class="list-group">
+            <li *ngFor="let boughtItem of boughtItems"
+            class="list-group-item">{{boughtItem.title}}</li>
+        </ul>
   </main><!-- /.container -->
   
   <!-- VISTA DE LA LISTA DE LOS PRODUCTOS EN EL CARRITO DE LA COMPRA -->
-  <ul class="list-group">
-    <li *ngFor="let boughtItem of boughtItems"
-    class="list-group-item">{{boughtItem.title}}</li>
-  </ul>
+  
 
 
 

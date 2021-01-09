@@ -13,7 +13,9 @@ export class StatefulComponent implements OnInit {
   shopModel: Shop = new Shop(); // declaramos shopModel, para nuestro modelo de shop, es decir los datos
   boughtItems: Array<Product>; // declaramos boughtItems, para product es la interface y va a ser un array que recibe un producto
 
-  constructor() { }
+  constructor() {
+    this.boughtItems = [];
+  }
 
   ngOnInit(): void {
   }
