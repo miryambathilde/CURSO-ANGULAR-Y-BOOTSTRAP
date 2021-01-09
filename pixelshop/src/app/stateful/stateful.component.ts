@@ -13,6 +13,8 @@ export class StatefulComponent implements OnInit {
   shopModel: Shop = new Shop(); // declaramos shopModel, para nuestro modelo de shop, es decir los datos
   boughtItems: Array<Product>; // declaramos boughtItems, para product es la interface y va a ser un array que recibe un producto
 
+  /* AQUI EN EL CONSTRUCTOR AÑADIMOS boughtItems PARA QUE SE VAYA
+  LISTANDO NUESTRO CARRITO DE LA COMPRA */
   constructor() {
     this.boughtItems = [];
   }
