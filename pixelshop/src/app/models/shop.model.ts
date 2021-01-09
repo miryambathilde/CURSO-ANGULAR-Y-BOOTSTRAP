@@ -20,7 +20,7 @@ export class Shop {
       {
       title: 'Curso Fullstack',
       desc: 'Aprende desarrollo frontend y backend desde 0 con Miryam Bathilde',
-      picture: 'assets/images/fullstack-dev.jpg',
+      picture: 'assets/images/Full-stack-developer.png',
       price: 420
       }
     ];
