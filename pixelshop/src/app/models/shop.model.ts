@@ -8,19 +8,19 @@ export class Shop {
       {
       title: 'Curso Wordpress',
       desc: 'Aprende Wordpress desde 0 con Miryam Bathilde',
-      picture:'assets/images/wordpress.jpg',
+      picture:'assets/images/wordpress-laptop.jpg',
       price: 164
       },
       {
       title: 'Curso Frontend',
       desc: 'Aprende desarrollo front end desde 0 con Miryam Bathilde',
-      picture: 'assets/images/frontend.jpg', 
+      picture: 'assets/images/frontend-developer.jpg', 
       price: 220
       },
       {
       title: 'Curso Fullstack',
       desc: 'Aprende desarrollo frontend y backend desde 0 con Miryam Bathilde',
-      picture: 'assets/images/fullstack.jpg',
+      picture: 'assets/images/fullstack-dev.jpg',
       price: 420
       }
     ];
