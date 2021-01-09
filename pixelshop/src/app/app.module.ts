@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatefulComponent } from './stateful/stateful.component';
+import { StatelessComponent } from './stateless/stateless.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StatefulComponent
+    StatefulComponent,
+    StatelessComponent
   ],
   imports: [
     BrowserModule,
