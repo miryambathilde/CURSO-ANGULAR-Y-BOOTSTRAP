@@ -30,4 +30,14 @@ export class StatefulComponent implements OnInit {
   cursoMatriculado(_event: Product) { //el evento es una propiedad que recibimos desde la vista y es del tipo product
     this.clickItem(_event); //el elemento sobre el que se ha hecho click será el que recibamos desde la vista con el evento
   }
+
+  /* CARRITO DE LA COMPRA */
+  /* metodo finalPrice para que devuelva el importe total de los productos que hay en el carrito*/
+  finalPrice() {
+    if (this.boughtItems) { //si hay productos comprados, esto es importante para que SÓLO SE MUESTRE SI HAY PRODUCTOS COMPRADOS
+      return this.boughtItems.reduce( //devuelveme prev: valor previo, item que es el producto
+        (prev: number, item: Product) => prev + item.price, 0 //y esto será igual a el prev + precio del producto y 0 es el indice inicial
+      );
+    }
+  }
 }

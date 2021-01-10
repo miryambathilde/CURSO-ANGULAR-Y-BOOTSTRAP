@@ -15,13 +15,21 @@
           </div>
       </div>
     </div>
-        <ul class="list-group">
-            <li *ngFor="let boughtItem of boughtItems"
-            class="list-group-item">{{boughtItem.title}}</li>
-        </ul>
+
+    <!-- VISTA DE LA LISTA DE LOS PRODUCTOS EN EL CARRITO DE LA COMPRA -->
+    <!-- CARRITO DE LA COMPRA -->
+    <ul class="list-group">
+      <li class="list-group-item disabled">Información matrícula</li>
+      <li *ngFor="let boughtItem of boughtItems"
+      class="list-group-item">{{boughtItem.title}} <!-- mostramos el elemento que se ha comprado con su titulo -->
+      <span class="badge badge-primary badge-pill">{{boughtItem.price | currency:"&euro;"}}</span> <!-- mostramos el elemento que se ha comprado con su precio -->
+    </li>
+    <li class="list-group-item disabled"><h2>Total: {{finalPrice() | currency:"&euro;"}}</h2> <!-- mostramos el elemento el precio final, con el metodo finalPrice -->
+    </li>
+    </ul>
 </main><!-- /.container -->
   
-  <!-- VISTA DE LA LISTA DE LOS PRODUCTOS EN EL CARRITO DE LA COMPRA -->
+  
   
 
 
