@@ -9,7 +9,9 @@
             <!-- le paso product como un parametro y le decimos que es curso, es decir, cuando él
             HAGA EL NGFOR tenemos el objeto curso, ese objeto curso, lo pasamos mediante una propiedad que es PRODUCT
             AL COMPONENTE SIN ESTADO -->
-            <app-stateless [product]="curso"></app-stateless> <!-- y aqui llamamos al componente stateless -->
+            <!-- el metodo (cursomatriculado)= "cursoMatriculado($event)", cursomatriculado es igual al metodo cursoMatriculado
+            y que recibe como parámetro el evento, que es el producto en cuestion -->
+            <app-stateless [product]="curso" (cursomatriculado)= "cursoMatriculado($event)"></app-stateless> <!-- y aqui llamamos al componente stateless -->
           </div>
       </div>
     </div>

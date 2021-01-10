@@ -26,4 +26,8 @@ export class StatefulComponent implements OnInit {
   clickItem(_curso){
     this.boughtItems.push(_curso);
   }
+  /*creamos el evento cursoMatriculado que hemos creado en la vista*/
+  cursoMatriculado(_event: Product) { //el evento es una propiedad que recibimos desde la vista y es del tipo product
+    this.clickItem(_event); //el elemento sobre el que se ha hecho click será el que recibamos desde la vista con el evento
+  }
 }
