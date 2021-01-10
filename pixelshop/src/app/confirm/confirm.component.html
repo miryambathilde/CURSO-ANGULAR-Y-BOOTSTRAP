@@ -1,22 +1,22 @@
 <!-- Button trigger modal copiamos el texto https://getbootstrap.com/docs/5.0/components/modal/ LIVE IN DEMO -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]= "isDisabled">
+<button *ngIf= "!isDisabled" (click)="showModal = true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Confirma tu compra
   </button>
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" [ngClass]="{'show': showModal}" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="exampleModalLabel">Confirmación de la compra</h5>
+          <button (click)="showModal = false" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          Te confirmamos que tu compra se ha finalizado con éxito y que ya te has matriculado. ¡Bienvenido!
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button (click)="showModal = false" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button (click)="showModal = false" type="button" class="btn btn-primary">Guardar Cambios</button>
         </div>
       </div>
     </div>
