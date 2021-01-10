@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core'; //importancion de ViewChild para manejar al componente hijo
+import { ConfirmComponent } from '../confirm/confirm.component';
 import { Product } from '../interface/product'; // importamos la interface product
 import { Shop } from '../models/shop.model'; // importamos nuestro modelo shop
 
@@ -9,6 +10,10 @@ import { Shop } from '../models/shop.model'; // importamos nuestro modelo shop
   styleUrls: ['./stateful.component.css']
 })
 export class StatefulComponent implements OnInit {
+  /* exportamos el ViewChild, le pasamos por parametro el componente confirm
+  y le decimos que que confirmChild es del tipo ConfirmComponent */
+  @ViewChild(ConfirmComponent, {static: false}) 
+  confirmChild: ConfirmComponent;
 
   shopModel: Shop = new Shop(); // declaramos shopModel, para nuestro modelo de shop, es decir los datos
   boughtItems: Array<Product>; // declaramos boughtItems, para product es la interface y va a ser un array que recibe un producto
@@ -29,6 +34,7 @@ export class StatefulComponent implements OnInit {
   /*creamos el evento cursoMatriculado que hemos creado en la vista*/
   cursoMatriculado(_event: Product) { //el evento es una propiedad que recibimos desde la vista y es del tipo product
     this.clickItem(_event); //el elemento sobre el que se ha hecho click será el que recibamos desde la vista con el evento
+    this.confirmChild.isDisabled = false; // activamos el boton: confirmChild, que es nuestro componente y le decimos que isDisable está en false
   }
 
   /* CARRITO DE LA COMPRA */
