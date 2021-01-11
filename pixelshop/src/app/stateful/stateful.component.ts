@@ -1,49 +1,60 @@
-import { Component, OnInit, ViewChild } from '@angular/core'; //importancion de ViewChild para manejar al componente hijo
 import { ConfirmComponent } from '../confirm/confirm.component';
-import { Product } from '../interface/product'; // importamos la interface product
-import { Shop } from '../models/shop.model'; // importamos nuestro modelo shop
-
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Product } from '../interface/product';
+import { Shop } from '../models/shop.model';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-stateful',
-  templateUrl: './stateful.component.html',
-  styleUrls: ['./stateful.component.css']
+ selector: 'app-stateful',
+ templateUrl: './stateful.component.html',
+ styleUrls: ['./stateful.component.css']
 })
-export class StatefulComponent implements OnInit {
-  /* exportamos el ViewChild, le pasamos por parametro el componente confirm
-  y le decimos que que confirmChild es del tipo ConfirmComponent */
-  @ViewChild(ConfirmComponent, {static: false}) 
+export class StatefulComponent implements OnInit, OnDestroy {
+
+  @ViewChild(ConfirmComponent, {static: false})
   confirmChild: ConfirmComponent;
 
-  shopModel: Shop = new Shop(); // declaramos shopModel, para nuestro modelo de shop, es decir los datos
-  boughtItems: Array<Product>; // declaramos boughtItems, para product es la interface y va a ser un array que recibe un producto
+  errorHttp: boolean;
+  shopModel: any;
+  boughtItems: Array<Product>;
 
-  /* AQUI EN EL CONSTRUCTOR AÑADIMOS boughtItems PARA QUE SE VAYA
-  LISTANDO NUESTRO CARRITO DE LA COMPRA */
-  constructor() {
-    this.boughtItems = [];
+  private shopSubscription: Subscription;
+
+
+ constructor(private http: HttpClient) {
+   this.boughtItems = [];
+   this.shopModel = {shopItems: []};
   }
 
-  ngOnInit(): void {
-  }
+ ngOnInit(): void {
+  this.shopSubscription = this.http.get('assets/cursos.json').subscribe(
+    (respuesta: Response) => { this.shopModel.shopItems  = respuesta; },
+    (respuesta: Response) => { this.errorHttp  = true; }
+  );
+ }
 
-  /* creamos el evento clickItem que hemos creado en la vista */
-  clickItem(_curso){
-    this.boughtItems.push(_curso);
-  }
-  /*creamos el evento cursoMatriculado que hemos creado en la vista*/
-  cursoMatriculado(_event: Product) { //el evento es una propiedad que recibimos desde la vista y es del tipo product
-    this.clickItem(_event); //el elemento sobre el que se ha hecho click será el que recibamos desde la vista con el evento
-    this.confirmChild.isDisabled = false; // activamos el boton: confirmChild, que es nuestro componente y le decimos que isDisable está en false
-  }
+ ngOnDestroy(): void {
+   this.shopSubscription.unsubscribe();
+ }
 
-  /* CARRITO DE LA COMPRA */
-  /* metodo finalPrice para que devuelva el importe total de los productos que hay en el carrito*/
-  finalPrice() {
-    if (this.boughtItems) { //si hay productos comprados, esto es importante para que SÓLO SE MUESTRE SI HAY PRODUCTOS COMPRADOS
-      return this.boughtItems.reduce( //devuelveme prev: valor previo, item que es el producto
-        (prev: number, item: Product) => prev + item.price, 0 //y esto será igual a el prev + precio del producto y 0 es el indice inicial
-      );
-    }
+ clickItem(_curso) {
+   this.boughtItems.push(_curso);
+ }
+ cursoMatriculado(_event: Product) {
+   this.clickItem(_event);
+   this.onConfirm();
+   this.confirmChild.isDisabled = false;
+ }
+
+ finalPrice() {
+   if (this.boughtItems) {
+   return this.boughtItems.reduce(
+     (prev: number, item: Product) => prev + item.price, 0
+   );
+ }
+}
+  onConfirm() {
+    alert('Has añadido un nuevo curso');
   }
 }

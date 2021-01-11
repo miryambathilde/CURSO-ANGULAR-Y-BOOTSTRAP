@@ -1,0 +1,21 @@
+[
+    {
+    "title": "Curso Wordpress",
+    "desc": "Aprende Wordpress desde 0 con Miryam Bathilde",
+    "picture": "assets/wordpress-laptop",
+    "price": 164
+    },
+    {
+    "title": "Curso Frontend",
+    "desc": "Aprende desarrollo front end desde 0 con Miryam Bathilde",
+    "picture": "assets/frontend-developer.jpg",
+    "price": 220
+    },
+    {
+    "title": "Curso Fullstack",
+    "desc": "Aprende desarrollo frontend y backend desde 0 con Miryam Bathilde",
+    "picture": "assets/FullStack-Developer.jpg",
+    "price": 420
+    }
+]
+  
