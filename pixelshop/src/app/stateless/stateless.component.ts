@@ -1,11 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'; //incorporamos output, que es un evento, y EventEmitter que es un emisor de evento
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core'; //incorporamos output, que es un evento, y EventEmitter que es un emisor de evento
 import { Product } from '../interface/product';
 
 @Component({
   selector: 'app-stateless',
   templateUrl: './stateless.component.html',
-  styleUrls: ['./stateless.component.css']
+  styleUrls: ['./stateless.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush //de esta manera él solo instanciara el componente con el que esté interactuando
 })
+
 export class StatelessComponent implements OnInit {
   /* cursomatriculado sera un evento que contiene el producto, el producto en el cual la persona se ha matriculado  */
   @Output () cursomatriculado: EventEmitter<Product> = new EventEmitter(); //OUTPUT para el curso donde se matricula, que es el EventEmitter y le pasamos un producto
@@ -26,6 +28,7 @@ export class StatelessComponent implements OnInit {
 
   }
   isdisabled() {
+    console.log(this.product.title);
     return !!this.disable;
   }
 }

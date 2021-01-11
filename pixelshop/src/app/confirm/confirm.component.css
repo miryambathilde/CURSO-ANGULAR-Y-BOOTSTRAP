@@ -1,3 +1,7 @@
 .modal.show {
     display: block;
 }
+
+.button.btn-close {
+    border: none;
+}
