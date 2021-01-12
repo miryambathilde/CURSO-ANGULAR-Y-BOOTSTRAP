@@ -29,8 +29,9 @@ export class StatusCartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
-  }
+  } 
 
+  
   /* METODO CONFIRM, simplemente vamos a emitir que se ha confirmado una compra  */
   confirm() {
     this.add.emit();

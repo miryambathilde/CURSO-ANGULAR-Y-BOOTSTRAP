@@ -1,0 +1,28 @@
+<!-- cualquier formulario de angular tiene que tener un etiqueta FORM y un NGFORM -->
+<section id="forms">
+    <header>
+      <h1>Inicio de sesión</h1>
+    </header>
+    <!-- junto a NGFORM hemos capturado el evento NGSUBMIT en el que llamamos al metodo
+    ONSUBMIT(FORMULARIO PRIMERO) y añadimos la etiqueta novalidate ya que los campos son requeridos   -->
+    <form #formularioprimero="ngForm" (ngSubmit)="onSubmit(formularioprimero)" novalidate>
+        <fieldset id="forms__input">
+            <legend>Rellena los campos con tus datos:</legend>
+            <p>
+                <label for="user">Usuario:</label>
+                <input name="user" id="user" type="text" placeholder="Su nombre de usuario" required ngModel #user="ngModel">
+            </p>
+            <p>
+                <!-- hemos añadido un nuevo campo de password con el NGMODEL -->
+                <label for="password">Password:</label>
+                <input name="password" id="password" type="password" required ngModel #user="ngModel">
+            </p>
+        <!-- HEMOS AÑADIDO UN BOTON DE ENVIAR -->
+        <!-- para evitar que se pueda enviar sin rellenar los datos, deshabilitamos el boton cuando
+        el formularioprimero no es valido -->
+        <p><button class="button primary" type="submit" [disabled]= "!formularioprimero.valid">Enviar</button></p>
+        </fieldset>
+    </form>
+    {{formularioprimero.valid | json}}
+</section>
+   
