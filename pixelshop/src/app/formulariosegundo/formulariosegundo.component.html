@@ -1,0 +1,18 @@
+<section id="forms">
+    <header><h1>Inicio de sesión</h1></header>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario)" novalidate>
+        <fieldset id="forms__input">
+            <legend>Introduce tus datos</legend>
+            <p>
+                <label for="user">Usuario</label>
+                <input formControlName="user">
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input formControlName="password">
+            </p>
+            <p><button class="button primary" type="submit" [disabled]="!formulario.valid">Enviar</button></p>
+        </fieldset>
+    </form>
+</section>
+  
