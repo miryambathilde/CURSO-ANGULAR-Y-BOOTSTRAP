@@ -43,7 +43,7 @@ export class StatefulComponent implements OnInit, OnDestroy {
  }
  cursoMatriculado(_event: Product) {
    this.clickItem(_event);
-   this.onConfirm();
+   this.onConfirm(); //le decimos que muestre el alert del metodo OnConfirm cuando se matricule en un curso
    this.confirmChild.isDisabled = false;
  }
 
@@ -54,7 +54,8 @@ export class StatefulComponent implements OnInit, OnDestroy {
    );
  }
 }
+  //metodo onConfirm//
   onConfirm() {
-    alert('Has añadido un nuevo curso');
+    alert('Acabas de añadir un nuevo curso');
   }
 }

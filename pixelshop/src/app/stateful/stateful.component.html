@@ -28,6 +28,11 @@
     </li>
     </ul>
     <app-confirm></app-confirm> <!-- aqui llamamos al componente confirm -->
+    
+    <!-- aqui llamamos al componente status-cart y le pasamos como propiedades los input 
+    del componente (price y Shopmodel) y el método onConfirm que tenemos en el archivo de logica, 
+    para que se comuniquen entre ellos-->
+    <app-status-cart [price]="finalPrice()" [shopModel]="shopModel.shopItems" (add)="onConfirm()"></app-status-cart>
 </main><!-- /.container -->
   
   
