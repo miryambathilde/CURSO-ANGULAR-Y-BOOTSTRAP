@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class FormulariosegundoComponent implements OnInit {
 
   formulario: FormGroup; //formulario es del tipo FORMGROUP y será publico
+  mipattern = '[a-z]*'; //añadimos mipattern, nuestro patron de nuestra expresion regular para el validador
 
   /* creamos una variable privada */
   constructor (private formBuilder: FormBuilder)  { }
@@ -21,7 +22,7 @@ export class FormulariosegundoComponent implements OnInit {
   que tiene que tener un mínimo de 3 caracteres */
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      user: ['', [Validators.required, Validators.minLength(3)]],
+      user: ['', [Validators.required, Validators.minLength(3), Validators.pattern(this.mipattern)]],//aqui concatenamos tambien nuestro mipattern, regex pattern
       password: ['', Validators.required]
     });
   }
