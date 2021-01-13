@@ -56,6 +56,6 @@ export class StatefulComponent implements OnInit, OnDestroy {
 }
   //metodo onConfirm//
   onConfirm() {
-    alert('Acabas de añadir un nuevo curso');
+    /* alert('Acabas de añadir un nuevo curso'); */
   }
 }
