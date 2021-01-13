@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ValidateUrl } from '../validators/url.validator'; //aqui importamos el validador que hemos creado
 
 @Component({
   selector: 'app-formulariosegundo',
@@ -23,7 +24,8 @@ export class FormulariosegundoComponent implements OnInit {
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
       user: ['', [Validators.required, Validators.minLength(3), Validators.pattern(this.mipattern)]],//aqui concatenamos tambien nuestro mipattern, regex pattern
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      url:['', [Validators.required, ValidateUrl]] //añadimos el campo url y pasaremos nuestro propio validador ValidateUrl y lo ponemos como campo obligatorio
     });
   }
 

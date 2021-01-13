@@ -11,10 +11,14 @@
                 <label for="password">Password</label>
                 <input formControlName="password">
             </p>
+            <p>
+                <label for="url">Url</label>
+                <input formControlName="url">
+            </p>
 
             <!-- validator *ngIf para errores que puede haber con el el usuario-->
             <span *ngIf="formulario.get('user').hasError('required')">El campo usuario es obligatorio</span>
-            <!-- {{formulario.controls.user.errors | json}}       -->
+            {{formulario.controls.user.errors | json}}      
 
             <p><button class="button primary" type="submit" [disabled]="!formulario.valid">Enviar</button></p>
         </fieldset>
