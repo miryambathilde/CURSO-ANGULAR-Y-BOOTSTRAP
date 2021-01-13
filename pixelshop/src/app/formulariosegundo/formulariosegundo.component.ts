@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ValidateEmail } from '../validators/email.validator';
 import { ValidateUrl } from '../validators/url.validator'; //aqui importamos el validador que hemos creado
 
 @Component({
@@ -11,7 +12,7 @@ export class FormulariosegundoComponent implements OnInit {
 
   formulario: FormGroup; //formulario es del tipo FORMGROUP y será publico
   mipattern = '[a-z]*'; //añadimos mipattern, nuestro patron de nuestra expresion regular para el validador
-
+  
   /* creamos una variable privada */
   constructor (private formBuilder: FormBuilder)  { }
 
@@ -25,7 +26,8 @@ export class FormulariosegundoComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       user: ['', [Validators.required, Validators.minLength(3), Validators.pattern(this.mipattern)]],//aqui concatenamos tambien nuestro mipattern, regex pattern
       password: ['', Validators.required],
-      url:['', [Validators.required, ValidateUrl]] //añadimos el campo url y pasaremos nuestro propio validador ValidateUrl y lo ponemos como campo obligatorio
+      url:['', [Validators.required, ValidateUrl]], //añadimos el campo url y pasaremos nuestro propio validador ValidateUrl y lo ponemos como campo obligatorio
+      email: ['', [Validators.required, ValidateEmail]] //añadimos email con su validador 
     });
   }
 
